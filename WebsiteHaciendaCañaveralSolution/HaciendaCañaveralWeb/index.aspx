@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Bootstrap Theme Company Page</title>
+  <title>Hacienda Cañaveral</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--Boostrap-->
@@ -23,11 +23,11 @@
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
+        <span class="icon-bar">QEUE ES ESTO</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a a class="navbar-brand" href="#myPage" >@html.ActionLink(Internazionalization.Shared.index_menu_inicio,"index","index_menu_inicio")</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">

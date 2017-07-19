@@ -1,0 +1,50 @@
+﻿@using MVCHaciendaCañaveral.Language;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+   
+    <!--Menu de inicio-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#myPage">@Index.INICIO</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#about">@Index.ACERCA_DE</a></li>
+                    <li><a href="#services">@Index.SERVICIOS</a></li>
+                    <li><a href="#portfolio">@Index.ORGANICOS</a></li>
+                    <li><a href="#pricing">@Index.PROCESO_DE_ELABORACION</a></li>
+                    <li><a href="#contact">@Index.CONTACTOS</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+     
+    <div class="container body-content">
+         @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Hacienda Cañaveral</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/index")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
