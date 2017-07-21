@@ -26,6 +26,14 @@ namespace MVCEFHaciendaCañaveral
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/index").Include(
+                      "~/Scripts/index.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css",
+                      "~/Content/index.css"));
         }
     }
 }
