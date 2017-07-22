@@ -1,7 +1,9 @@
 ﻿using MVCEFHaciendaCañaveral.Business;
+using MVCEFHaciendaCañaveral.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,17 +11,19 @@ namespace MVCEFHaciendaCañaveral.Controllers
 {
     public class RoleController : Controller
     {
-        private RoleBusiness roleBusiness;
+        private RoleBusiness _roleBusiness;
+        private HaciendaCañaveralContext db;
 
         public RoleController()
         {
-            this.roleBusiness = new RoleBusiness();
+            _roleBusiness = new RoleBusiness();
+            db = new HaciendaCañaveralContext();
         }
 
         // GET: Role
         public ActionResult Index()
         {
-            var model = roleBusiness.GetAllRoles();
+            var model = _roleBusiness.GetAllRoles();
             return View(model);
         }
 
@@ -37,62 +41,77 @@ namespace MVCEFHaciendaCañaveral.Controllers
 
         // POST: Role/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Role role)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _roleBusiness.Crear(role);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+
             }
+            return View();
         }
 
         // GET: Role/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Role rol = _roleBusiness.GetRoleById(id);
+            if (rol == null)
+            {
+                return HttpNotFound();
+            }
+            return View(rol);
         }
 
         // POST: Role/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Role role)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _roleBusiness.Editar(role);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+
             }
+            return View(role);
         }
 
-        // GET: Role/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Roles/Delete/5
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Role role = db.Role.Find(id);
+            if (role == null)
+            {
+                return HttpNotFound();
+            }
+            return View(role);
         }
 
-        // POST: Role/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // POST: Roles/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Role role = db.Role.Find(id);
+            db.Role.Remove(role);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

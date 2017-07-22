@@ -1,4 +1,5 @@
 ﻿using MVCEFHaciendaCañaveral.Business;
+using MVCEFHaciendaCañaveral.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace MVCEFHaciendaCañaveral.Controllers
     public class UsuarioController : Controller
     {
         private UsuarioBusiness _usuarioBusiness;
+        private RoleBusiness _roleBusiness;
 
         public UsuarioController()
         {
             _usuarioBusiness = new UsuarioBusiness();
+            _roleBusiness = new RoleBusiness();
         }
         // GET: Usuario
         public ActionResult Index()
@@ -31,67 +34,87 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
+            var roles = _roleBusiness.GetAllRoles();
+            ViewBag.ListaRoles = new SelectList(roles, "IdRole", "Descripcion");
             return View();
         }
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Usuario usuario)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _usuarioBusiness.Crear(usuario);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                
             }
+            return View();
         }
 
         // GET: Usuario/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Usuario usuario = _usuarioBusiness.UserByID(id);
+            if(usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
         }
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Usuario usuario)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _usuarioBusiness.Editar(usuario);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                
             }
+            return View(usuario);
         }
 
         // GET: Usuario/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Usuario usuario = _usuarioBusiness.UserByID(id);
+            if(usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usuario);
         }
 
         // POST: Usuario/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(Usuario usuario)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _usuarioBusiness.Eliminar(usuario);
+                    return RedirectToAction("Index");
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
             }
+            return View(usuario);
         }
     }
 }
