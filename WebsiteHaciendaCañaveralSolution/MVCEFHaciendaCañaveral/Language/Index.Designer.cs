@@ -61,11 +61,65 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acerca de.
+        ///   Looks up a localized string similar to Nosotros.
         /// </summary>
         public static string ACERCA_DE {
             get {
                 return ResourceManager.GetString("ACERCA_DE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Historia.
+        /// </summary>
+        public static string ACERCADE_HISTORIA {
+            get {
+                return ResourceManager.GetString("ACERCADE_HISTORIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misión.
+        /// </summary>
+        public static string ACERCADE_MISION {
+            get {
+                return ResourceManager.GetString("ACERCADE_MISION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nuestros valores.
+        /// </summary>
+        public static string ACERCADE_NUESTROS_VALORES {
+            get {
+                return ResourceManager.GetString("ACERCADE_NUESTROS_VALORES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objetivos.
+        /// </summary>
+        public static string ACERCADE_OBJETIVOS {
+            get {
+                return ResourceManager.GetString("ACERCADE_OBJETIVOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visión.
+        /// </summary>
+        public static string ACERCADE_VISION {
+            get {
+                return ResourceManager.GetString("ACERCADE_VISION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mas.
+        /// </summary>
+        public static string BTN_MAS {
+            get {
+                return ResourceManager.GetString("BTN_MAS", resourceCulture);
             }
         }
         
