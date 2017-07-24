@@ -133,30 +133,30 @@
     <value>Visión</value>
   </data>
   <data name="ACERCA_DE" xml:space="preserve">
-    <value>Nosotros</value>
+    <value>NOSOTROS</value>
     <comment>Opcion de menu del index</comment>
   </data>
   <data name="BTN_MAS" xml:space="preserve">
     <value>Mas</value>
   </data>
   <data name="CONTACTOS" xml:space="preserve">
-    <value>Contactos</value>
+    <value>CONTACTOS</value>
     <comment>Opcion de menu del index</comment>
   </data>
   <data name="INICIO" xml:space="preserve">
-    <value>Inicio</value>
+    <value>INICIO</value>
     <comment>Opcion de menu del index</comment>
   </data>
   <data name="ORGANICOS" xml:space="preserve">
-    <value>Orgánicos</value>
+    <value>ORGÁNICOS</value>
     <comment>Opcion de menu del index</comment>
   </data>
   <data name="PROCESO_DE_ELABORACION" xml:space="preserve">
-    <value>Proceso de elaboración</value>
+    <value>PROCESO DE ELABORACION</value>
     <comment>Opcion de menu del index</comment>
   </data>
   <data name="SERVICIOS" xml:space="preserve">
-    <value>Servicios</value>
+    <value>SERVICIOS</value>
     <comment>Opcion de menu del index</comment>
   </data>
 </root>

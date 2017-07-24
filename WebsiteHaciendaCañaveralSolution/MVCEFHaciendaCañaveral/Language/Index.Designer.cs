@@ -61,7 +61,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nosotros.
+        ///   Looks up a localized string similar to NOSOTROS.
         /// </summary>
         public static string ACERCA_DE {
             get {
@@ -124,7 +124,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contactos.
+        ///   Looks up a localized string similar to CONTACTOS.
         /// </summary>
         public static string CONTACTOS {
             get {
@@ -133,7 +133,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inicio.
+        ///   Looks up a localized string similar to INICIO.
         /// </summary>
         public static string INICIO {
             get {
@@ -142,7 +142,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orgánicos.
+        ///   Looks up a localized string similar to ORGÁNICOS.
         /// </summary>
         public static string ORGANICOS {
             get {
@@ -151,7 +151,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proceso de elaboración.
+        ///   Looks up a localized string similar to PROCESO DE ELABORACION.
         /// </summary>
         public static string PROCESO_DE_ELABORACION {
             get {
@@ -160,7 +160,7 @@ namespace MVCEFHaciendaCañaveral.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Servicios.
+        ///   Looks up a localized string similar to SERVICIOS.
         /// </summary>
         public static string SERVICIOS {
             get {
