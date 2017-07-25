@@ -199,6 +199,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
     <Content Include="Images\imagen 1.PNG" />
+    <Content Include="Images\Producto 2.jpg" />
+    <Content Include="Images\producto1.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\index.js" />
