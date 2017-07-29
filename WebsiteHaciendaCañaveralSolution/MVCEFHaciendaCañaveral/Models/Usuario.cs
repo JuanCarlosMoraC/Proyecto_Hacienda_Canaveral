@@ -25,6 +25,8 @@ namespace MVCEFHaciendaCañaveral.Models
         [StringLength(255)]
         public String Password { get; set; }
         public Boolean Enable { get; set; }
-        public virtual Role Role { get; set; }
+        public int IdRole { get; set; }
+        [ForeignKey("IdRole")]
+        public Role Role { get; set; }
     }
 }

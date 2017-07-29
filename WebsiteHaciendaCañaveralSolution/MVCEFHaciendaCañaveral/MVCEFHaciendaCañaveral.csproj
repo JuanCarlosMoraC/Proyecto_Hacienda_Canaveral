@@ -150,11 +150,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Business\CorreoBusiness.cs" />
+    <Compile Include="Business\DatosOrganizacionalesBusiness.cs" />
     <Compile Include="Business\RoleBusiness.cs" />
-    <Compile Include="Business\TelefonoBusiness.cs" />
     <Compile Include="Business\UsuarioBusiness.cs" />
+    <Compile Include="Business\TelefonoBusiness.cs" />
+    <Compile Include="Controllers\CorreoController.cs" />
+    <Compile Include="Controllers\DatosOrganizacionalesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\TelefonoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,6 +181,7 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\HashHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -198,7 +203,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.1.1-vsdoc.js" />
-    <Content Include="Images\Iconos\ic_organic_find.svg" />
     <Content Include="Images\imagen 1.PNG" />
     <Content Include="Images\Producto 2.jpg" />
     <Content Include="Images\producto1.jpg" />
@@ -234,13 +238,25 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Usuario\Delete.cshtml" />
-    <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\DatosOrganizacionales\Index.cshtml" />
+    <Content Include="Views\DatosOrganizacionales\Create.cshtml" />
+    <Content Include="Views\DatosOrganizacionales\Edit.cshtml" />
+    <Content Include="Views\DatosOrganizacionales\Delete.cshtml" />
+    <Content Include="Views\Correo\Index.cshtml" />
+    <Content Include="Views\Correo\Create.cshtml" />
+    <Content Include="Views\Correo\Edit.cshtml" />
+    <Content Include="Views\Correo\Delete.cshtml" />
+    <Content Include="Views\Telefono\Index.cshtml" />
+    <Content Include="Views\Telefono\Create.cshtml" />
+    <Content Include="Views\Telefono\Edit.cshtml" />
+    <Content Include="Views\Telefono\Delete.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

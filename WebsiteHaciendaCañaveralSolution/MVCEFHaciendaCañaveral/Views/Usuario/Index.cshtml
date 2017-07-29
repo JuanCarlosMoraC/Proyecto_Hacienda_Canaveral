@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.Enable)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Enable)
+            @Html.DisplayName("Role")
         </th>
         <th></th>
     </tr>
@@ -41,14 +41,13 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Enable)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Role.Descripcion)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdUsuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdUsuario }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IdUsuario })
         </td>
     </tr>

@@ -12,5 +12,6 @@ namespace MVCEFHaciendaCañaveral.Models
         public int IdRole { get; set; }
         [Required]
         public String Descripcion { get; set; }
+        public List<Usuario> Usuarios { get; set; }
     }
 }

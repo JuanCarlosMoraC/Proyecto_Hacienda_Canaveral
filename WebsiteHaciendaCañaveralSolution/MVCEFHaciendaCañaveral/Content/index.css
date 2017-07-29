@@ -3,6 +3,7 @@
     color: #818181;
 }
 
+
 #indexMenu {
     margin-top : 1%;
     font-family: Arial;
@@ -33,33 +34,11 @@ h4 {
     font-family: Montserrat, sans-serif;
 }
 
-
-.block-sm{
-    padding : 2%;
-}
-
-.block-md {
-    padding: 5%;
-}
-
-.block-bg {
-    padding: 10%;
-}
-
-
-#container-values {
-    background-color: #F5F5F5;
-    margin: 2%;
-    padding: 2%;
-}
-
-
-
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
     width: 98%;
     margin: 0;
-    margin-left: 1%;
+    margin-left :1%;   
 }
 
 

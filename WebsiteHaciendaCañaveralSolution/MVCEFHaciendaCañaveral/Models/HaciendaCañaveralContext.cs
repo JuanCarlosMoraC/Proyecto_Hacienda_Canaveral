@@ -16,10 +16,11 @@ namespace MVCEFHaciendaCañaveral.Models
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Role> Role { get; set; }
         public DbSet<Telefono> Telefono { get; set; }
+        public DbSet<Correo> Correo { get; set; }
+        public DbSet<DatosOrganizacionales> DatosOrganizacionales { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Usuario>().HasRequired(x => x.Role); //Permite realizar el foreing key
             base.OnModelCreating(modelBuilder);
         }
 

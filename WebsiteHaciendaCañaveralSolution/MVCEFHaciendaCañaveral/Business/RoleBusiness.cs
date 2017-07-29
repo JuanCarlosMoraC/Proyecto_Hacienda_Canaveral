@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MVCEFHaciendaCañaveral.Business
 {
@@ -16,7 +17,27 @@ namespace MVCEFHaciendaCañaveral.Business
             }
         }
 
-        internal Role GetRoleById(int idRole)
+        public List<SelectListItem> GetAllRolesItem()
+        {
+            List<SelectListItem> listaItem = new List<SelectListItem>();
+
+            using (var db = new HaciendaCañaveralContext())
+            {
+                List<Role> roles = GetAllRoles();
+
+                foreach (var item in roles)
+                {
+                    listaItem.Add(new SelectListItem()
+                    {
+                        Value = item.IdRole.ToString(),
+                        Text = item.Descripcion
+                    });
+                }
+            }
+            return listaItem;
+        }
+
+        public Role GetRoleById(int idRole)
         {
             using (var db = new HaciendaCañaveralContext())
             {
@@ -24,18 +45,16 @@ namespace MVCEFHaciendaCañaveral.Business
             }
         }
 
-        internal void Editar(Role role)
+        public void Editar(Role role)
         {
             using (var db = new HaciendaCañaveralContext())
             {
-
-                //db.Role.Attach(role);
                 db.Entry(role).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }
 
-        internal void Eliminar(int idRole)
+        public void Eliminar(int idRole)
         {
             using (var db = new HaciendaCañaveralContext())
             {
@@ -46,7 +65,7 @@ namespace MVCEFHaciendaCañaveral.Business
             }
         }
 
-        internal void Crear(Role role)
+        public void Crear(Role role)
         {
             using (var db = new HaciendaCañaveralContext())
             {

@@ -8,79 +8,79 @@ using System.Web.Mvc;
 
 namespace MVCEFHaciendaCañaveral.Controllers
 {
-    public class UsuarioController : Controller
+    public class TelefonoController : Controller
     {
-        private RoleBusiness _roleBusiness;
-        private UsuarioBusiness _usuarioBusiness;
         private HaciendaCañaveralContext db;
+        private DatosOrganizacionalesBusiness _datosOrganizacionalesBusiness;
+        private TelefonoBusiness _telefonoBusiness;
 
-        public UsuarioController()
+        public TelefonoController()
         {
-            this._roleBusiness= new RoleBusiness();
-            this._usuarioBusiness = new UsuarioBusiness();
-            this.db = new HaciendaCañaveralContext();
+            db = new HaciendaCañaveralContext();
+            _datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
+            _telefonoBusiness = new TelefonoBusiness();
         }
 
-        // GET: Usuario
+        // GET: Telefono
         public ActionResult Index()
         {
-            var model = _usuarioBusiness.GetAllUsers();
+            var model = _telefonoBusiness.getAllPhones();
             return View(model);
         }
 
-        // GET: Usuario/Details/5
+        // GET: Telefono/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Usuario/Create
+        // GET: Telefono/Create
         public ActionResult Create()
         {
-            ViewBag.Roles = _roleBusiness.GetAllRolesItem();
+            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Telefono/Create
         [HttpPost]
-        public ActionResult Create(Usuario usuario)
+        public ActionResult Create(Telefono telefono)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _usuarioBusiness.Crear(usuario);
+                    _telefonoBusiness.Crear(telefono);
                     return RedirectToAction("Index");
                 }
             }
             catch
             {
+                
             }
             return View();
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Telefono/Edit/5
         public ActionResult Edit(int id)
         {
-            Usuario usuario = _usuarioBusiness.UserByID(id);
-            if (usuario == null)
+            Telefono telefono = _telefonoBusiness.getPhoneById(id);
+            if(telefono== null)
             {
                 HttpNotFound();
             }
-
-            ViewBag.Roles = _roleBusiness.GetAllRolesItem();
-            return View(usuario);
+            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
+            return View(telefono);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Telefono/Edit/5
         [HttpPost]
-        public ActionResult Edit(Usuario usuario)
+        public ActionResult Edit(Telefono telefono)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _usuarioBusiness.Editar(usuario);
+                    _telefonoBusiness.Editar(telefono);
                     return RedirectToAction("Index");
                 }
             }
@@ -90,32 +90,26 @@ namespace MVCEFHaciendaCañaveral.Controllers
             return View();
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Telefono/Delete/5
         public ActionResult Delete(int id)
         {
-            Usuario usuario = _usuarioBusiness.UserByID(id);
-            if(usuario == null)
+            Telefono telefono = db.Telefono.Find(id);
+            if(telefono == null)
             {
                 HttpNotFound();
             }
-            return View(usuario);
+            return View(telefono);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Telefono/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                _usuarioBusiness.Eliminar(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-            }
-            return View();
-
+            Telefono telefono = db.Telefono.Find(id);
+            db.Telefono.Remove(telefono);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

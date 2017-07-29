@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVCEFHaciendaCañaveral.Models.DatosOrganizacionales>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefonos)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ubicacion)
+        </td>
+        <td>
+            @foreach (var correo in item.Correos)
+            {
+                @Html.DisplayFor(modelItem => correo.Email)
+                <br />
+            }
+        </td>
+        <td>
+            @foreach (var correo in item.Telefonos)
+            {
+                @Html.DisplayFor(modelItem => correo.NumeroTelefono)
+                <br />
+            }
+         </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdDatosOrganizacionales }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdDatosOrganizacionales })
+        </td>
+    </tr>
+}
+
+</table>
