@@ -41,5 +41,15 @@ namespace MVCEFHaciendaCañaveral.Business
                 db.SaveChanges();
             }
         }
+
+        internal void Eliminar(int idCorreo)
+        {
+            using (var db = new HaciendaCañaveralContext())
+            {
+                Correo correo = db.Correo.Find(idCorreo);
+                db.Correo.Remove(correo);
+                db.SaveChanges();
+            }
+        }
     }
 }

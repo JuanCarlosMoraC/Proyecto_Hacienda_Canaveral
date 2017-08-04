@@ -63,5 +63,15 @@ namespace MVCEFHaciendaCañaveral.Business
                 db.SaveChanges();
             }
         }
+
+        internal void Eliminar(int idOrganizacion)
+        {
+            using (var db = new HaciendaCañaveralContext())
+            {
+                DatosOrganizacionales datos= db.DatosOrganizacionales.Find(idOrganizacion);
+                db.DatosOrganizacionales.Remove(datos);
+                db.SaveChanges();
+            }
+        }
     }
 }

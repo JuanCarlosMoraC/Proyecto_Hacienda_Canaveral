@@ -58,9 +58,8 @@ namespace MVCEFHaciendaCañaveral.Business
         {
             using (var db = new HaciendaCañaveralContext())
             {
-
-                Role r = GetRoleById(idRole);
-                db.Entry(r).State = System.Data.Entity.EntityState.Deleted;
+                Role r = db.Role.Find(idRole);
+                db.Role.Remove(r);
                 db.SaveChanges();
             }
         }

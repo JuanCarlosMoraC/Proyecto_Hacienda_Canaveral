@@ -29,35 +29,6 @@ namespace MVCEFHaciendaCañaveral.Business
 
         public void Editar(Usuario usuario)
         {
-            /*
-            SqlCommand cmdVenta = new SqlCommand();
-            cmdVenta.CommandText = "modificarUsuario";
-            cmdVenta.CommandType = System.Data.CommandType.StoredProcedure;
-            cmdVenta.Parameters.Add(new SqlParameter("@IdUsuario", usuario.IdUsuario));
-            cmdVenta.Parameters.Add(new SqlParameter("@Nombre", usuario.Nombre));
-            cmdVenta.Parameters.Add(new SqlParameter("@Apellidos", usuario.Apellidos));
-            cmdVenta.Parameters.Add(new SqlParameter("@Email", usuario.Email));
-            cmdVenta.Parameters.Add(new SqlParameter("@Password", HashHelper.MD5(usuario.Password)));
-            cmdVenta.Parameters.Add(new SqlParameter("@Enable", usuario.Enable));
-            cmdVenta.Parameters.Add(new SqlParameter("@IdRole", usuario.Role.IdRole));
-
-
-            SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["HaciendaCañaVeral"].ConnectionString);
-            try
-            {
-                connection.Open();
-                cmdVenta.Connection = connection;
-                cmdVenta.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            */
             usuario.Password = HashHelper.MD5(usuario.Password);
             using (var db = new HaciendaCañaveralContext())
             {
@@ -68,33 +39,6 @@ namespace MVCEFHaciendaCañaveral.Business
 
         public void Crear(Usuario usuario)
         {
-            /*SqlCommand cmdVenta = new SqlCommand();
-            cmdVenta.CommandText = "insertarUsuario";
-            cmdVenta.CommandType = System.Data.CommandType.StoredProcedure;
-            cmdVenta.Parameters.Add(new SqlParameter("@Nombre", usuario.Nombre));
-            cmdVenta.Parameters.Add(new SqlParameter("@Apellidos", usuario.Apellidos));
-            cmdVenta.Parameters.Add(new SqlParameter("@Email", usuario.Email));
-            cmdVenta.Parameters.Add(new SqlParameter("@Password", HashHelper.MD5(usuario.Password)));
-            cmdVenta.Parameters.Add(new SqlParameter("@Enable", usuario.Enable));
-            cmdVenta.Parameters.Add(new SqlParameter("@IdRole", usuario.Role.IdRole));
-
-
-            SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["HaciendaCañaVeral"].ConnectionString);
-            try
-            {
-                connection.Open();
-                cmdVenta.Connection = connection;
-                cmdVenta.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }*/
-            //String password = usuario.Password;
             usuario.Password = HashHelper.MD5(usuario.Password);
             using(var db = new HaciendaCañaveralContext())
             {

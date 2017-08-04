@@ -10,21 +10,20 @@ namespace MVCEFHaciendaCañaveral.Controllers
 {
     public class TelefonoController : Controller
     {
-        private HaciendaCañaveralContext db;
-        private DatosOrganizacionalesBusiness _datosOrganizacionalesBusiness;
-        private TelefonoBusiness _telefonoBusiness;
+
+        private DatosOrganizacionalesBusiness datosOrganizacionalesBusiness;
+        private TelefonoBusiness telefonoBusiness;
 
         public TelefonoController()
         {
-            db = new HaciendaCañaveralContext();
-            _datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
-            _telefonoBusiness = new TelefonoBusiness();
+            datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
+            telefonoBusiness = new TelefonoBusiness();
         }
 
         // GET: Telefono
         public ActionResult Index()
         {
-            var model = _telefonoBusiness.getAllPhones();
+            var model = telefonoBusiness.getAllPhones();
             return View(model);
         }
 
@@ -37,7 +36,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Telefono/Create
         public ActionResult Create()
         {
-            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
+            ViewBag.Datos = datosOrganizacionalesBusiness.GetAllDatosItem();
             return View();
         }
 
@@ -49,7 +48,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _telefonoBusiness.Crear(telefono);
+                    telefonoBusiness.Crear(telefono);
                     return RedirectToAction("Index");
                 }
             }
@@ -63,12 +62,12 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Telefono/Edit/5
         public ActionResult Edit(int id)
         {
-            Telefono telefono = _telefonoBusiness.getPhoneById(id);
+            Telefono telefono = telefonoBusiness.getPhoneById(id);
             if(telefono== null)
             {
                 HttpNotFound();
             }
-            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
+            ViewBag.Datos = datosOrganizacionalesBusiness.GetAllDatosItem();
             return View(telefono);
         }
 
@@ -80,7 +79,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _telefonoBusiness.Editar(telefono);
+                    telefonoBusiness.Editar(telefono);
                     return RedirectToAction("Index");
                 }
             }
@@ -93,7 +92,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Telefono/Delete/5
         public ActionResult Delete(int id)
         {
-            Telefono telefono = db.Telefono.Find(id);
+            Telefono telefono = telefonoBusiness.getPhoneById(id);
             if(telefono == null)
             {
                 HttpNotFound();
@@ -106,10 +105,15 @@ namespace MVCEFHaciendaCañaveral.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Telefono telefono = db.Telefono.Find(id);
-            db.Telefono.Remove(telefono);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                telefonoBusiness.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+            }
+            return View();
         }
     }
 }

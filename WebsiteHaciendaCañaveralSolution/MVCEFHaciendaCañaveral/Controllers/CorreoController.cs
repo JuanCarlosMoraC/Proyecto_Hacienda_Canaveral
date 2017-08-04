@@ -10,20 +10,18 @@ namespace MVCEFHaciendaCañaveral.Controllers
 {
     public class CorreoController : Controller
     {
-        private CorreoBusiness _correoBusiness;
-        private HaciendaCañaveralContext db;
-        private DatosOrganizacionalesBusiness _datosOrganizacionalesBusiness;
+        private CorreoBusiness correoBusiness;
+        private DatosOrganizacionalesBusiness datosOrganizacionalesBusiness;
 
         public CorreoController()
         {
-            _correoBusiness = new CorreoBusiness();
-            db = new HaciendaCañaveralContext();
-            _datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
+            this.correoBusiness = new CorreoBusiness();
+            this.datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
         }
         // GET: Correo
         public ActionResult Index()
         {
-            var model = _correoBusiness.GetAllCorreo();
+            var model = correoBusiness.GetAllCorreo();
             return View(model);
         }
 
@@ -36,7 +34,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Correo/Create
         public ActionResult Create()
         {
-            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
+            ViewBag.Datos = datosOrganizacionalesBusiness.GetAllDatosItem();
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _correoBusiness.Crear(correo);
+                    correoBusiness.Crear(correo);
                     return RedirectToAction("Index");
                 }   
             }
@@ -61,13 +59,13 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Correo/Edit/5
         public ActionResult Edit(int id)
         {
-            Correo correo = _correoBusiness.GetCorreoById(id);
+            Correo correo = correoBusiness.GetCorreoById(id);
             if (correo == null)
             {
                 return HttpNotFound();
             }
             
-            ViewBag.Datos = _datosOrganizacionalesBusiness.GetAllDatosItem();
+            ViewBag.Datos = datosOrganizacionalesBusiness.GetAllDatosItem();
             return View(correo);
         }
 
@@ -79,7 +77,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _correoBusiness.Editar(correo);
+                    correoBusiness.Editar(correo);
                     return RedirectToAction("Index");
                 }
             }
@@ -93,7 +91,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Correo/Delete/5
         public ActionResult Delete(int id)
         {
-            Correo correo = db.Correo.Find(id);
+            Correo correo = correoBusiness.GetCorreoById(id);
             if (correo == null)
             {
                 HttpNotFound();
@@ -106,10 +104,15 @@ namespace MVCEFHaciendaCañaveral.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Correo correo= db.Correo.Find(id);
-            db.Correo.Remove(correo);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                correoBusiness.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+            }
+            return View();
         }
     }
 }

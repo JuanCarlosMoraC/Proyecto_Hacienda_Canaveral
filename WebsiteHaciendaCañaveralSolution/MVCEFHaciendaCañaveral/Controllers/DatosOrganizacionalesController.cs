@@ -11,18 +11,16 @@ namespace MVCEFHaciendaCañaveral.Controllers
 {
     public class DatosOrganizacionalesController : Controller
     {
-        private DatosOrganizacionalesBusiness _datosOrganizacionalesBusiness;
-        private HaciendaCañaveralContext db;
+        private DatosOrganizacionalesBusiness datosOrganizacionalesBusiness;
 
         public DatosOrganizacionalesController()
         {
-            _datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
-            db = new HaciendaCañaveralContext();
+            datosOrganizacionalesBusiness = new DatosOrganizacionalesBusiness();
         }
         // GET: DatosOrganizacionales
         public ActionResult Index()
         {
-            var model = _datosOrganizacionalesBusiness.getAllDataOrganizacional();
+            var model = datosOrganizacionalesBusiness.getAllDataOrganizacional();
             return View(model);
         }
 
@@ -46,7 +44,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _datosOrganizacionalesBusiness.Crear(datos);
+                    datosOrganizacionalesBusiness.Crear(datos);
                     return RedirectToAction("Index");
                 }   
             }
@@ -60,7 +58,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: DatosOrganizacionales/Edit/5
         public ActionResult Edit(int id)
         {
-            DatosOrganizacionales datos= _datosOrganizacionalesBusiness.GetDatoById(id);
+            DatosOrganizacionales datos= datosOrganizacionalesBusiness.GetDatoById(id);
             if (datos == null)
             {
                 return HttpNotFound();
@@ -76,7 +74,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _datosOrganizacionalesBusiness.Editar(datos);
+                    datosOrganizacionalesBusiness.Editar(datos);
                     return RedirectToAction("Index");
                 }
             }
@@ -91,7 +89,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         public ActionResult Delete(int id)
         {
             
-            DatosOrganizacionales datos = db.DatosOrganizacionales.Find(id);
+            DatosOrganizacionales datos = datosOrganizacionalesBusiness.GetDatoById(id);
             if (datos == null)
             {
                 return HttpNotFound();
@@ -104,10 +102,15 @@ namespace MVCEFHaciendaCañaveral.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DatosOrganizacionales datos = db.DatosOrganizacionales.Find(id);
-            db.DatosOrganizacionales.Remove(datos);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                datosOrganizacionalesBusiness.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+            }
+            return View();
         }
     }
 }

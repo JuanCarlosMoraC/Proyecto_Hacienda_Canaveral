@@ -42,5 +42,15 @@ namespace MVCEFHaciendaCañaveral.Business
                 db.SaveChanges();
             }
         }
+
+        internal void Eliminar(int id)
+        {
+            using (var db = new HaciendaCañaveralContext())
+            {
+                Telefono telefono = db.Telefono.Find(id);
+                db.Telefono.Remove(telefono);
+                db.SaveChanges();
+            }
+        }
     }
 }

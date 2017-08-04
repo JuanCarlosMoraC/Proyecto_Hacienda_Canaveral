@@ -151,12 +151,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Business\CorreoBusiness.cs" />
     <Compile Include="Business\DatosOrganizacionalesBusiness.cs" />
+    <Compile Include="Business\IngredienteBusiness.cs" />
+    <Compile Include="Business\InstruccionBusiness.cs" />
+    <Compile Include="Business\RecetaBusiness.cs" />
     <Compile Include="Business\RoleBusiness.cs" />
     <Compile Include="Business\UsuarioBusiness.cs" />
     <Compile Include="Business\TelefonoBusiness.cs" />
     <Compile Include="Controllers\CorreoController.cs" />
     <Compile Include="Controllers\DatosOrganizacionalesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredienteController.cs" />
+    <Compile Include="Controllers\InstruccionController.cs" />
+    <Compile Include="Controllers\RecetaController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TelefonoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -176,10 +182,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Correo.cs" />
     <Compile Include="Models\DatosOrganizacionales.cs" />
+    <Compile Include="Models\Ingrediente.cs" />
+    <Compile Include="Models\Instruccion.cs" />
+    <Compile Include="Models\Receta.cs" />
     <Compile Include="Models\Telefono.cs" />
     <Compile Include="Models\HaciendaCañaveralContext.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\Utilidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\HashHelper.cs" />
   </ItemGroup>
@@ -257,9 +267,17 @@
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Ingrediente\Index.cshtml" />
+    <Content Include="Views\Receta\Index.cshtml" />
+    <Content Include="Views\Receta\Create.cshtml" />
+    <Content Include="Views\Ingrediente\Create.cshtml" />
+    <Content Include="Views\Instruccion\Index.cshtml" />
+    <Content Include="Views\Instruccion\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Ingredientes\" />
+    <Folder Include="Images\Instrucciones\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

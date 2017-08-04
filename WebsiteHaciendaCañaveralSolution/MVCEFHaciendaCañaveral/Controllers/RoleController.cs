@@ -11,19 +11,17 @@ namespace MVCEFHaciendaCañaveral.Controllers
 {
     public class RoleController : Controller
     {
-        private RoleBusiness _roleBusiness;
-        private HaciendaCañaveralContext db;
+        private RoleBusiness roleBusiness;
 
         public RoleController()
         {
-            _roleBusiness = new RoleBusiness();
-            db = new HaciendaCañaveralContext();
+            roleBusiness = new RoleBusiness();
         }
 
         // GET: Role
         public ActionResult Index()
         {
-            var model = _roleBusiness.GetAllRoles();
+            var model = roleBusiness.GetAllRoles();
             return View(model);
         }
 
@@ -47,7 +45,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _roleBusiness.Crear(role);
+                    roleBusiness.Crear(role);
                     return RedirectToAction("Index");
                 }
             }
@@ -61,7 +59,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
         // GET: Role/Edit/5
         public ActionResult Edit(int id)
         {
-            Role rol = _roleBusiness.GetRoleById(id);
+            Role rol = roleBusiness.GetRoleById(id);
             if (rol == null)
             {
                 return HttpNotFound();
@@ -77,7 +75,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _roleBusiness.Editar(role);
+                    roleBusiness.Editar(role);
                     return RedirectToAction("Index");
                 }
             }
@@ -89,13 +87,13 @@ namespace MVCEFHaciendaCañaveral.Controllers
         }
 
         // GET: Roles/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Role.Find(id);
+            Role role = roleBusiness.GetRoleById(id)
             if (role == null)
             {
                 return HttpNotFound();
@@ -108,10 +106,15 @@ namespace MVCEFHaciendaCañaveral.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Role role = db.Role.Find(id);
-            db.Role.Remove(role);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                roleBusiness.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+            }
+            return View();
         }
     }
 }

@@ -18,6 +18,9 @@ namespace MVCEFHaciendaCañaveral.Models
         public DbSet<Telefono> Telefono { get; set; }
         public DbSet<Correo> Correo { get; set; }
         public DbSet<DatosOrganizacionales> DatosOrganizacionales { get; set; }
+        public DbSet<Receta> Receta { get; set; }
+        public DbSet<Ingrediente> Ingrediente { get; set; }
+        public DbSet<Instruccion> Instruccion { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
