@@ -93,7 +93,7 @@ namespace MVCEFHaciendaCañaveral.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = roleBusiness.GetRoleById(id)
+            Role role = roleBusiness.GetRoleById(id);
             if (role == null)
             {
                 return HttpNotFound();
